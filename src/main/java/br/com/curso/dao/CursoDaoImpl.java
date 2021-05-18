@@ -22,7 +22,8 @@ public class CursoDaoImpl extends BaseDaoImpl<Curso, Long>
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Curso> pesquisarPorNome(String nome, Session sessao) throws HibernateException {		
-		Query consulta = sessao.createQuery("from Curso c left join fetch Disciplina d where c.nome like :nome");
+		Query consulta = sessao.createQuery("from Curso c left join fetch c.disciplinas"
+				+ " where c.nome like :nome");
 		consulta.setParameter("nome", "%" + nome + "%");
 		return consulta.list();
 	}
@@ -30,7 +31,8 @@ public class CursoDaoImpl extends BaseDaoImpl<Curso, Long>
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Curso> pesquisarPorSigla(String sigla, Session sessao) throws HibernateException {
-		Query consulta = sessao.createQuery("from Curso c left join fetch Disciplina d where c.sigla like :sigla");
+		Query consulta = sessao.createQuery("from Curso c left join fetch c.disciplinas"
+				+ " where c.sigla like :sigla");
 		consulta.setParameter("sigla", "%" + sigla + "%");
 		return consulta.list();
 	}

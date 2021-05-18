@@ -74,7 +74,7 @@ public class CursoDaoImplTest {
 		consulta.setParameter("id", consulta);
 	}
 
-	@Test
+//	@Test
 	public void testPesquisarPorNome() {
 		pesquisarCursoBD();
 		sessao = HibernateUtil.abrirSessao();
@@ -84,7 +84,7 @@ public class CursoDaoImplTest {
 		System.out.println(cursos.size());
 	}
 
-	@Test
+//	@Test
 	public void pesquisarPorSigla() {
 		pesquisarCursoBD();
 		sessao = HibernateUtil.abrirSessao();

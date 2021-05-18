@@ -1,6 +1,7 @@
 package br.com.curso.vo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -25,6 +26,8 @@ public class Curso implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_Tipocurso", nullable = false)
 	private TipoCurso tipoCurso;
+	@OneToMany(mappedBy = "curso")
+	private List<Disciplina> disciplinas;
 	
 	public Curso() {
 		
@@ -85,6 +88,14 @@ public class Curso implements Serializable {
 
 	public void setTipoCurso(TipoCurso tipoCurso) {
 		this.tipoCurso = tipoCurso;
+	}
+	
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
+	}
+
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
 	}
 
 	@Override

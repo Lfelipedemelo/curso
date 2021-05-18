@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Cascade;
+
 @Entity
 @Table(name = "Endereco")
 public class Endereco implements Serializable{
@@ -25,6 +27,7 @@ public class Endereco implements Serializable{
     private String estado;
     @Column(nullable = false)
     private String complemento;
+
     
     public Endereco() {
     	

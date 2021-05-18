@@ -1,6 +1,7 @@
 package br.com.curso.vo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -22,6 +23,8 @@ public class Professor implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_endereco", nullable = false)
 	private Endereco endereco;
+	@OneToMany(mappedBy = "professor")
+	private List<Disciplina> disciplinas;
 	
 	public Professor() {
 		

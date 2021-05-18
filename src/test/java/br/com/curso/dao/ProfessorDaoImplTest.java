@@ -74,7 +74,7 @@ public class ProfessorDaoImplTest {
 	public void testPesquisarPorNome() {
 		pesquisarProfessorBD();
 		sessao = HibernateUtil.abrirSessao();
-		List<Professor> professores = dao.pesquisarPorNome(professor.getNome(),professor.getId(), sessao);
+		List<Professor> professores = dao.pesquisarPorNome(professor.getNome(), sessao);
 		sessao.close();
 		assertTrue(professores.size() > 0);
 	}
