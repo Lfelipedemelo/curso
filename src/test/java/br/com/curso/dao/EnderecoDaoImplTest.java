@@ -39,7 +39,7 @@ public class EnderecoDaoImplTest {
 		assertEquals(endereco.getLogradouro(), enderecoAlt.getLogradouro());
 	}
 	
-//	@Test
+	@Test
 	public void testSalvar() {
 		endereco = new Endereco(gerarCep(), gerarLogradouro(), gerarBairro()
 				,gerarCidade(), gerarUF(), gerarComplemento());

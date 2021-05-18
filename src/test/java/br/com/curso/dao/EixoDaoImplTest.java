@@ -39,7 +39,7 @@ public class EixoDaoImplTest {
 		assertEquals(eixo.getNome(), eixoAlt.getNome());
 	}
 	
-//	@Test
+	@Test
 	public void testSalvar() {
 		eixo = new Eixo(gerarNomeEixo(),gerarCaracter(15));
 		sessao = HibernateUtil.abrirSessao();

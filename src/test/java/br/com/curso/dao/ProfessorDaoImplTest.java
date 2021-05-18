@@ -70,24 +70,15 @@ public class ProfessorDaoImplTest {
 		consulta.setParameter("id", consulta);
 	}
 
-//	@Test
+	@Test
 	public void testPesquisarPorNome() {
 		pesquisarProfessorBD();
 		sessao = HibernateUtil.abrirSessao();
-		List<Professor> professores = dao.pesquisarPorNome(professor.getNome().substring(0, 3), sessao);
+		List<Professor> professores = dao.pesquisarPorNome(professor.getNome(),professor.getId(), sessao);
 		sessao.close();
 		assertTrue(professores.size() > 0);
 	}
-	
-	@Test
-	public void pesquisarPorDisciplinas() {
-		pesquisarProfessorBD();
-		sessao = HibernateUtil.abrirSessao();
-		List<Professor> professores = dao.pesquisarDisciplinas(professor.getId(), sessao);
-		sessao.close();
-		assertTrue(professores.size() > 0);
-	}
-	
+		
 	public Professor pesquisarProfessorBD() {
 		sessao = HibernateUtil.abrirSessao();
 		Query consulta = sessao.createQuery("from Professor");

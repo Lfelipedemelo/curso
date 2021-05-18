@@ -74,13 +74,14 @@ public class CursoDaoImplTest {
 		consulta.setParameter("id", consulta);
 	}
 
-//	@Test
+	@Test
 	public void testPesquisarPorNome() {
 		pesquisarCursoBD();
 		sessao = HibernateUtil.abrirSessao();
-		List<Curso> cursos = dao.pesquisarPorNome(curso.getNome().substring(0, 3), sessao);
+		List<Curso> cursos = dao.pesquisarPorNome(curso.getNome(), sessao);
 		sessao.close();
 		assertTrue(cursos.size() > 0);
+		System.out.println(cursos.size());
 	}
 
 	@Test

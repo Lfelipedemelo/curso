@@ -21,18 +21,16 @@ public class ProfessorDaoImpl extends BaseDaoImpl<Professor, Long>
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Professor> pesquisarPorNome(String nome, Session sessao) throws HibernateException {
-		
-		Query consulta = sessao.createQuery("from Professor where nome like :nome");
+	public List<Professor> pesquisarPorNome(String nome,Long idProfessor, Session sessao) throws HibernateException {
+		Query consulta = sessao.createQuery("from Disciplina d, Professor p where p.nome like :nome and d.id_professor = :idProfessor");
 		consulta.setParameter("nome", "%" + nome + "%");
+		consulta.setParameter("idProfessor", idProfessor);
+		
+		if(consulta.list().size() < 1) {
+			consulta = sessao.createQuery("from Professor where nome like :nome");
+			consulta.setParameter("nome", "%" + nome + "%");		
+		}
 		return consulta.list();
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Professor> pesquisarDisciplinas(Long id, Session sessao) throws HibernateException {
-		Query consulta = sessao.createQuery("from Disciplina d, Professor p where p.id = :id");
-		consulta.setParameter("id", id);
-		return consulta.list();
-	}
 }
